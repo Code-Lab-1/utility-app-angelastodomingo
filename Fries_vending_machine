@@ -1,0 +1,239 @@
+import time
+
+
+food = ["Small cup of fries","Medium cup of fries","Large cup of fries","Extra large cup of fries"] #Fries cup sizes.
+prices = [2,3,5,9] #Prices of the cups in its respective order.
+potatoes = ["Russet Potato", "Sweet Potato"] #Kinds of potato.
+cuts = ["Standard cut", "Crinkle cut", "Wedges", "Steak cut", "Smiley cut ($3)"] #Types of potato cuts.
+cutflavorcost = 3 #There are some cuts and flavors that have price tags on them, so I added this. Both of them cost only $3.
+flavor = ["Cheddar cheese", "Sour cream and onion", "Barbeque", "Wasabi", "Chili with cheese ($3)"] #Flavors.
+
+#The following variables below are going to be filled when the user inputs something. 
+potatoselect = []
+potatocutts = []
+potatoflavor = []
+myorder = []
+myordercost = []
+money = []
+counter = 0
+total = 0
+
+#Welcoming and decorative texts.
+print ("~~***************@@***************~~")
+print(" ")
+print ("Welcome to the Fries vending machine.\nThe vending machine for potato lovers.")
+print(" ")
+print ("~~***************@@***************~~")
+
+#If the user presses any number or letter, they can start ordering. However, if they press 0, the program immediately closes.
+order = input("\n***---Can I take your order? Press any number to get started. Press 0 to discontinue.---***\n> Your answer: ")
+if order == "0":
+    exit()
+
+else: 
+    print("\nLet's get to it!")
+
+#The user has to input their money so that they can later on check if they can afford some items after they order.
+money = int(input("Please enter your money.\n$"))
+
+#I use a lot of if-elses and whiles on this program so that when the user makes an invalid choice, it can always repeat back at them and they can choose an item again.
+potatopick = True
+while potatopick == True: 
+    potat = input("\n***---Please enter a number. What kind of potato would you like to eat?---***\n(0) Cancel order\n(1) Russet potato\n(2) Sweet Potato\n> Your answer: ")
+
+    if potat == "1":
+        print ("You selected " + potatoes[0] + ".")
+        potatoselect.append(potatoes[0]) #Whatever item the user chooses, it will always append at the right variable. 
+        potatopick = False #I set the boolean value to False because I don't want potatopick to repeat after the user makes a choice. 
+
+    elif potat == "2":
+        print ("You selected " + potatoes[1] + ".")
+        potatoselect.append(potatoes[1])
+        potatopick = False
+        
+    elif potat == "0":
+        print("See you next time!") #If the user chooses 0 at any of the selecting menu, it will always cancel the order. 
+        potatopick = False
+        exit()
+
+    else:
+        print("Invalid number. Please enter the menu number.") #potatopick menu will repeat again if the user makes the wrong choice.
+
+#Again, I do the same thing with the potato cuts. It will all be the same code from here to the potato cup sizes.
+potatocuts = True 
+while potatocuts == True:
+    potatcut = input ("\n***---Please enter a number. How would you like your potatoes to be cut?---***\n(0) Cancel order\n(1) Standard cut\n(2) Crinkle cut\n(3) Wedges\n(4) Steak cut\n(5) Smiley cuts [$3]\n> Your answer: ")
+
+    if potatcut == "1":
+        print("You selected " + cuts[0] + ".")
+        potatocutts.append(cuts[0])
+        potatocuts = False 
+
+    elif potatcut == "2":
+        print("You selected " + cuts[1] + ".")
+        potatocutts.append(cuts[1])
+        potatocuts = False
+        
+    elif potatcut == "3":
+        print("You selected " + cuts[2] + ".")
+        potatocutts.append(cuts[2])
+        potatocuts = False 
+
+    elif potatcut == "4":
+        print("You selected " + cuts[3] + ".") 
+        potatocutts.append(cuts[3])
+        potatocuts = False
+        
+    elif potatcut == "5":
+        print("You selected " + cuts[4] + ".")
+        potatocutts.append(cuts[4])
+        total = total + (cutflavorcost) #Here is where some of the menu selections have prices on them. All of them are only $3. 
+        potatocuts = False
+
+    elif potatcut == "0":
+        print("See you next time!")
+        exit()
+
+    else: 
+        print("Invalid number. Please enter the menu number.")
+
+potafla = True 
+while potafla == True:
+    potafla= input ("\n***---Please enter a number. Select a flavor.---***\n(0) Cancel order\n(1) Cheddar Cheese\n(2) Sour Cream and Onion\n(3) Barbeque\n(4) Wasabi\n(5) Chili and cheese [$3]\n> Your answer: ")
+
+    if potafla == "1":
+        print("You selected " + flavor[0] + ".")
+        potatoflavor.append(flavor[0])
+        potafla = False 
+
+    elif potafla == "2":
+        print("You selected " + flavor[1] + ".")
+        potatoflavor.append(flavor[1])
+        potafla = False
+
+    elif potafla == "3":
+        print("You selected " + flavor[2] + ".")
+        potatoflavor.append(flavor[2])
+        potafla = False
+
+    elif potafla == "4":
+        print("You selected " + flavor[3] + ".")
+        potatoflavor.append(flavor[3])
+        potafla = False 
+
+    elif potafla == "5":
+        print("You selected " + flavor[4] + ".")
+        potatoflavor.append(flavor[4])
+        total = total + (cutflavorcost) #Another menu selection item with a price tag. 
+        potafla = False
+
+    elif potafla == "0":
+        print("See you next time!")
+        exit()
+        
+    else:
+        print("Invalid number. Please enter the menu number.")
+        potafla = True
+
+nextorder = True
+while nextorder== True: 
+    friesOrder = input("\n***---Please enter a number. Choose the size you want.---***\n(0) Cancel order\n(1) Small cup of fries [$2]\n(2) Medium cup of fries [$3]\n(3) Large cup of fries [$5]\n(4) Extra large cup of fries [$9]\n> Your answer: ")
+
+    if friesOrder == "1":
+        print("You selected " + food[0] + ".")
+        myorder.append(food[0])
+        myordercost.append(prices[0])
+        counter = counter + 1 #Counter is how you keep track of the items the user ordered. 
+        total = total + (prices[0]) #Every single cup sizes have prices on them. This is how the vending machine makes money. 
+
+    elif friesOrder == "2":
+        print("You selected " + food[1] + ".")
+        myorder.append(food[1])
+        myordercost.append(prices[1])
+        counter = counter + 1
+        total = total + (prices[1])
+
+    elif friesOrder == "3":
+        print("You selected " + food[2] + ".")
+        myorder.append(food[2])
+        myordercost.append(prices[2])
+        counter = counter + 1
+        total = total + (prices[2])
+
+    elif friesOrder == "4":
+        print("You selected " + food[3] + ".")
+        myorder.append(food[3])
+        myordercost.append(prices[3])
+        counter = counter + 1
+        total = total + (prices[3])
+
+    elif friesOrder == "0":
+        print("See you next time!")
+        exit()
+
+    else:
+        print("There has been an error. Please re-enter your order and select the menu items on the list.") 
+        #For some unknown reason, if the user makes an invalid choice, friesOrder doesn't repeat again, so I put an error message if they do make a mistake and have to repeat their entire order again.
+        exit()
+        
+    
+    finished = input("\nAre you all done? Press 1 to purchase. Press 0 to cancel the order.\n> Your answer: ") #After the user presses '1', it prints the receipt.
+    if finished == "1":
+     nextorder = False
+    else: 
+     print("See you next time!")
+     exit()
+
+
+y = 0 #This prints out the first thing the user orders in each variable.
+
+
+
+print ("<<**************************************>>")
+print ("                   ") #Decorative text have to be outside the loop or else they make a big mess in the receipt.
+
+while y <counter:
+    
+    print ("Your order:\n\nKind of potato selected: " + str(potatoselect[y])) #y are automatically replaced with menu selection items the user chooses. 
+    print ("Type of potato cut: " + str(potatocutts[y]))
+    print ("Flavors chosen: " + str(potatoflavor[y]))
+    print("Price of size chosen: $"+ str(myordercost[y]))
+    y = y + 1 #This is added so that it doesn't loop the orders repeatedly. 
+
+result = money - total #This is where the system checks if the user can afford the items they chose. 
+if money < total:
+    print("\nSorry, you can't afford this. :(")
+    print ("                   ")
+    print ("<<**************************************>>")
+    exit()
+    
+print("Your total is $" + str(total) + ".")
+
+print("Remaining money: $" + str(result) + ".") #This prints out the subtracted money of the user.
+
+print ("                   ")
+print ("<<**************************************>>")
+
+
+def countdown(duration): #If the user successfully pays their order, the machine automatically cooks their order, and the user has to wait some time for it to be ready.
+  print("\nThanks! Hold on tight while we prepare your fries...")
+  while duration > 0:
+        mins, seconds = divmod(duration, 60)
+        timer = '{:02d}:{:02d}'.format(mins, seconds)
+        print(f'\r{timer}', end='')
+        time.sleep(1)
+        duration -= 1
+  print("\nWe're done! Please collect your freshly made fries down below!")
+
+
+countdown(10) #This is shortened to an extreme length. Realistically, it would probably take one to two minutes for the machine to cook the user's orders, since it still has to cut the potatoes. 
+
+time.sleep(2) #A little break so that the user can collect their item.
+
+print(" ")
+print ("~~***************@@***************~~***************@@***************~~")
+print(" ")
+print ("Thank you for using our vending machine. Enjoy your delicious fries!")
+print(" ")
+print ("~~***************@@***************~~***************@@***************~~")
+
