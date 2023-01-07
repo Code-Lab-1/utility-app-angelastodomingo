@@ -44,11 +44,13 @@ while potatopick == True:
     if potat == "1":
         print ("You selected " + potatoes[0] + ".")
         potatoselect.append(potatoes[0]) #Whatever item the user chooses, it will always append at the right variable. 
+        time.sleep(1)
         potatopick = False #I set the boolean value to False because I don't want potatopick to repeat after the user makes a choice. 
 
     elif potat == "2":
         print ("You selected " + potatoes[1] + ".")
         potatoselect.append(potatoes[1])
+        time.sleep(1)
         potatopick = False
         
     elif potat == "0":
@@ -67,27 +69,32 @@ while potatocuts == True:
     if potatcut == "1":
         print("You selected " + cuts[0] + ".")
         potatocutts.append(cuts[0])
+        time.sleep(1)
         potatocuts = False 
 
     elif potatcut == "2":
         print("You selected " + cuts[1] + ".")
         potatocutts.append(cuts[1])
+        time.sleep(1)
         potatocuts = False
         
     elif potatcut == "3":
         print("You selected " + cuts[2] + ".")
         potatocutts.append(cuts[2])
+        time.sleep(1)
         potatocuts = False 
 
     elif potatcut == "4":
         print("You selected " + cuts[3] + ".") 
         potatocutts.append(cuts[3])
+        time.sleep(1)
         potatocuts = False
         
     elif potatcut == "5":
         print("You selected " + cuts[4] + ".")
         potatocutts.append(cuts[4])
-        total = total + (cutflavorcost) #Here is where some of the menu selections have prices on them. All of them are only $3. 
+        total = total + (cutflavorcost) #Here is where some of the menu selections have prices on them. All of them are only $3.
+        time.sleep(1)
         potatocuts = False
 
     elif potatcut == "0":
@@ -104,27 +111,32 @@ while potafla == True:
     if potafla == "1":
         print("You selected " + flavor[0] + ".")
         potatoflavor.append(flavor[0])
+        time.sleep(1)
         potafla = False 
 
     elif potafla == "2":
         print("You selected " + flavor[1] + ".")
         potatoflavor.append(flavor[1])
+        time.sleep(1)
         potafla = False
 
     elif potafla == "3":
         print("You selected " + flavor[2] + ".")
         potatoflavor.append(flavor[2])
+        time.sleep(1)
         potafla = False
 
     elif potafla == "4":
         print("You selected " + flavor[3] + ".")
         potatoflavor.append(flavor[3])
+        time.sleep(1)
         potafla = False 
 
     elif potafla == "5":
         print("You selected " + flavor[4] + ".")
         potatoflavor.append(flavor[4])
         total = total + (cutflavorcost) #Another menu selection item with a price tag. 
+        time.sleep(1)
         potafla = False
 
     elif potafla == "0":
@@ -145,6 +157,7 @@ while nextorder== True:
         myordercost.append(prices[0])
         counter = counter + 1 #Counter is how you keep track of the items the user ordered. 
         total = total + (prices[0]) #Every single cup sizes have prices on them. This is how the vending machine makes money. 
+        time.sleep(1) 
 
     elif friesOrder == "2":
         print("You selected " + food[1] + ".")
@@ -152,6 +165,7 @@ while nextorder== True:
         myordercost.append(prices[1])
         counter = counter + 1
         total = total + (prices[1])
+        time.sleep(1)
 
     elif friesOrder == "3":
         print("You selected " + food[2] + ".")
@@ -159,6 +173,7 @@ while nextorder== True:
         myordercost.append(prices[2])
         counter = counter + 1
         total = total + (prices[2])
+        time.sleep(1)
 
     elif friesOrder == "4":
         print("You selected " + food[3] + ".")
@@ -166,6 +181,7 @@ while nextorder== True:
         myordercost.append(prices[3])
         counter = counter + 1
         total = total + (prices[3])
+        time.sleep(1)
 
     elif friesOrder == "0":
         print("See you next time!")
@@ -216,6 +232,7 @@ print ("<<**************************************>>")
 
 
 def countdown(duration): #If the user successfully pays their order, the machine automatically cooks their order, and the user has to wait some time for it to be ready.
+  #I had to borrow this code from Stack Overflow: https://tiny.tw/3AAV
   print("\nThanks! Hold on tight while we prepare your fries...")
   while duration > 0:
         mins, seconds = divmod(duration, 60)
